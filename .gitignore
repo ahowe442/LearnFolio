@@ -1,9 +1,32 @@
-# Created by .ignore support plugin (hsz.mobi)
-.DS_Store
-.gradle/6.3/vcsMetadata-1/
-build/generated/
-build/resources/main/static/
-build/resources/main/templates/
-build/tmp/
-gradle/.DS_Store
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
 
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
