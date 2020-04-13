@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Index Page</title>
-</head>
-<body>
-<h1>Welcome</h1>
-<a th:href="@{/login}">Log In >></a>
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+
+<nav th:replace="fragments :: page-header"></nav>
+    <h1>Welcome to LearnFolio</h1></br>
+    <a th:href="@{/login}">Log In >></a>
 
 </body>
 </html>
-
-th:href="@(/login)"

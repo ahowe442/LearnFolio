@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Home Page</title>
-</head>
-<body>
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+
+<nav th:replace="fragments :: page-header"></nav>
+<h1>Home Page</h1>
 <h1>=====================</h1>
 
-<h1>This is the Home Page</h1>
+<h3>You made it home</h3>
 
 <h1>=====================</h1>
 </body>

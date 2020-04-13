@@ -7,11 +7,14 @@ public class Teacher {
     private int id;
     private static int nextId = 1;
 
+
+//    increments id
     public Teacher(){
         id = nextId;
         nextId++;
     }
 
+//    Constructor (calls itself to increment the id number)
     public Teacher(String name, String address, int id) {
         this();
         this.name = name;
@@ -20,7 +23,7 @@ public class Teacher {
     }
 
 
-
+//    getters and setters
     public String getName() {
         return name;
     }
@@ -41,4 +44,14 @@ public class Teacher {
         return id;
     }
 
+
+//    toString Method
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
