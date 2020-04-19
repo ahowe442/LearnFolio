@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
-<body>
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+
+<nav th:replace="fragments :: page-header"></nav>
     <h1>Login</h1>
     <form th:action="@{/login}" th:object="${loginForm}" method="post">
         <p th:if="${invalidCredentials}" class="error">Username or Password is Invalid</p>
@@ -13,7 +12,7 @@
         <input type="text" id="username" name="username" autofocus="autofocus">
         <br/>
 
-        <label for="password">Password</label>
+        <label for="password">Password  </label>
         <input  type="password" id="password" name="password" />
         <br/>
         <input type="submit" value="Log In" />
