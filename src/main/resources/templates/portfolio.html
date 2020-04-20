@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Student Portfolio</title>
+    <head th:replace="fragments :: head"></head>
+<body class="container body-content">
+
+<nav th:replace="fragments :: page-header"></nav>
+<body>
+<span class="border border-dark rounded-lg">
+        <!--        Student Portfolio -->
+
+            <div class="col-md-11 "><h5></br>Portfolio </br></br>
+                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+                    Submit Assignment
+                </button></h5>
+                <table class="table table-sm table-borderless table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr class="row">
+                            <th class="text-left">Portfolio Work Title</th>
+                            <th>Date Submitted</th>
+                            <th>Scale Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="row">
+                            <td>Math 101</td>
+                            <td class="text-center">04/19/20</td>
+                            <td class="text-center">3</td>
+                    </tr>
+                    <tr class="row">
+                        <td>Reading "Why the Pringles are all gone?" </td>
+                        <td class="text-center">04/20/20</td>
+                        <td class="text-center">3</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </span>
+</body>
+</html>
