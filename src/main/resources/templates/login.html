@@ -6,7 +6,7 @@
 <nav th:replace="fragments :: page-header"></nav>
     <h1>Login</h1>
     <form th:action="@{/login}" th:object="${loginForm}" method="post">
-        <div th:if="${invalidCredentials}" class="alert alert-secondary" role="alert">Username or Password is Invalid</div>
+        <div th:if="${invalidCredentials}" class="alert alert-danger" role="alert">Username or Password is Invalid</div>
 
         <label for="username">Username</label>
         <input type="text" id="username" name="username" autofocus="autofocus">
