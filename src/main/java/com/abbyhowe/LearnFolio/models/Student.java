@@ -1,5 +1,7 @@
 package com.abbyhowe.LearnFolio.models;
 
+import java.util.Objects;
+
 public class Student {
 
     private String name;
@@ -7,17 +9,13 @@ public class Student {
     private int id;
     private static int nextId = 1;
 
-    public Student(){
-        id = nextId;
-        nextId++;
-    }
 
     public Student(String name, String address, int id) {
-        this();
         this.name = name;
         this.address = address;
+        this.id=nextId;
+        nextId++;
     }
-
 
     public String getName() {
         return name;
@@ -39,4 +37,26 @@ public class Student {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return getId() == student.getId() &&
+                getName().equals(student.getName()) &&
+                getAddress().equals(student.getAddress());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getAddress(), getId());
+    }
 }

@@ -10,4 +10,5 @@ public class LearnFolioAppApplication {
 		SpringApplication.run(LearnFolioAppApplication.class, args);
 	}
 
+
 }
