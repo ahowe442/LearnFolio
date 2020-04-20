@@ -24,10 +24,13 @@ public class LoginController {
 
         if ("admin".equals(username) && "admin".equals(password)){
             //if both are true/correct
-            return "home";
+            return "teacherdash";
+        } else if ("student".equals(username) && "student".equals(password)){
+            //if both are true/correct
+            return "studentdash";
         }
         // either are false or incorrect
-        model.addAttribute("Invalid Credentials, Try Again.", true);
+        model.addAttribute("invalidCredentials", true);
         //return to login page
         return "login";
     }
