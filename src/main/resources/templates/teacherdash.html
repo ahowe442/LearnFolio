@@ -4,7 +4,7 @@
 <title>Teacher Dashboard</title>
 <head th:replace="fragments :: head"></head>
 <h1>{Teacher Account Name}</h1>
-<body class="container-fluid body-content">
+<body class="container body-content">
 <nav th:replace="fragments :: page-header"></nav>
 <h1>Teacher Dashboard</h1>
 <h1>=====================</h1>
@@ -16,12 +16,15 @@
 <div class="container-fluid">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
-<div>
 <div class="container-fluid">
     <!-- Three columns: One for each section - students(list view), Assignments, Calendar View -->
     <div class="row">
 <!--        Teacher Students in class View -->
-        <div class="col-md-3"><h5>Students(list view) Column</h5>
+
+        <div class="col-md-3"><h5></br>Students(list view) Column </br></br>
+            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+                Add Student to Class
+            </button></h5>
             <table>
             <tr class="row">
                 <th>Firstname</th>
@@ -39,15 +42,12 @@
                 <td>94</td>
             </tr>
             </table>
-            </br>
-            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-                Add Student to Class
-            </button>
         </div>
-    </div>
 
 <!--        Teacher Assignments View -->
-        <div class="col-md-8"><h5>Assignments Column</h5>
+        <div class="col-md-8"><h5></br>Assignments Column </br></br> <button type="button" class="btn btn-success" data-toggle="button" aria-pressed="false">
+            Add Assignment
+        </button></h5>
             <table class="table table-sm">
                 <thead>
                 <tr>
@@ -78,10 +78,6 @@
                 </tr>
                 </tbody>
             </table>
-            </br>
-            <button type="button" class="btn btn-success" data-toggle="button" aria-pressed="false">
-                Add Assignment
-            </button>
         </div>
 
 
