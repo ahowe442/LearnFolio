@@ -4,19 +4,21 @@
 <body class="container">
 
 <nav th:replace="fragments :: page-header"></nav>
-<h1 th:text="${title}">Coding Events</h1>
+<h1 th:text="${title}">Students</h1>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Student ID</th>
-            <th>Name</th>
-            <th>Student Address</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
         </tr>
     </thead>
     <tr th:each="student : ${students}">
         <td th:text="${student.id}"></td>
-        <td th:text="${student.name}"></td>
-        <td th:text="${student.address}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.email}"></td>
     </tr>
 </table>
 
