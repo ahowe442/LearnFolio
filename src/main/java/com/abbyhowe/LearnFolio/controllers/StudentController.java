@@ -4,10 +4,7 @@ import com.abbyhowe.LearnFolio.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,20 +20,26 @@ public class StudentController {
     public String displayAllStudents(Model model){
         model.addAttribute("title", "All Students");
         model.addAttribute("students", students);
-        return "students/index";
+
+        model.addAttribute("firstName", "First Name");
+        model.addAttribute("lastName", "Last Name");
+        model.addAttribute("email", "Email");
+
+        return "students/create";
     }
 
     @GetMapping("create")
     public String displayCreateStudentForm(Model model){
-        model.addAttribute("studentFirstName", "First Name");
-        model.addAttribute("studentLastName", "Last Name");
-        model.addAttribute("studentEmail", "Email");
+        model.addAttribute("title", "Create Student");
+        model.addAttribute("firstName", "First Name");
+        model.addAttribute("lastName", "Last Name");
+        model.addAttribute("email", "Email");
         return "students/create";
     }
 
-    @PostMapping("create")
+    @PostMapping(value = "create")
     public String processCreateStudentForm(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email) {
-        students.add(new Student(firstName, lastName, email));
+        students.add(new Student("firstName", "lastName", "email"));
         return "redirect:";
     }
 

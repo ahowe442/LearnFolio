@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StudentDashController {
     @RequestMapping("")
     public String studentdash(Model model) {
-//        model.addAttribute("employers", employerRepository.findAll());
-//        model.addAttribute("skills", skillRepository.findAll());
         return "studentdash";
     }
 
