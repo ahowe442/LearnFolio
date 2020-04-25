@@ -13,17 +13,13 @@ import java.util.List;
 @RequestMapping("students")
 public class StudentController {
 
-    @Autowired
+//    @Autowired
     private static List<Student> students = new ArrayList<>();
 
     @GetMapping
     public String displayAllStudents(Model model){
         model.addAttribute("title", "All Students");
         model.addAttribute("students", students);
-
-        model.addAttribute("firstName", "First Name");
-        model.addAttribute("lastName", "Last Name");
-        model.addAttribute("email", "Email");
 
         return "students/create";
     }

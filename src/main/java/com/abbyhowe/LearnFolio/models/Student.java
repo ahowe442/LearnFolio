@@ -1,12 +1,23 @@
 package com.abbyhowe.LearnFolio.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class Student {
-
+    @NotBlank(message = "First name is required")
+    @Size(min = 2, max = 50, message = "Name must be between 3 and 50 characters")
     private String firstName;
+
+    @NotBlank(message = "Last name is required")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String lastName;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email. Try again.")
     private String email;
+
     private int id;
     private static int nextId = 1;
 

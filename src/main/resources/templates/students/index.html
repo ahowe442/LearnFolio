@@ -32,7 +32,7 @@
         <th>Email Address</th>
     </tr>
     </thead>
-    <tr th:each="student : ${students}">
+    <tr th:block th:each="student : ${students}">
         <td th:text="${student.id}"></td>
         <td th:text="${student.firstName}"></td>
         <td th:text="${student.lastName}"></td>
