@@ -5,8 +5,10 @@ import com.abbyhowe.LearnFolio.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +39,14 @@ public class StudentController {
     }
 
     @PostMapping(value = "create")
-    public String processCreateStudentForm(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email) {
-        students.add(new Student("firstName", "lastName", "email"));
+    public String processCreateStudentForm(@ModelAttribute @Valid Student newStudent,
+                                           Errors errors, Model model) {
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Create Event");
+            return "events/create";
+        }
+
+        StudentData.add(newStudent);
         return "redirect:";
     }
 

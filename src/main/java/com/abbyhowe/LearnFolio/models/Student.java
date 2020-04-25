@@ -24,10 +24,14 @@ public class Student {
     private static int nextId = 1;
 
     public Student(String firstName, String lastName, String email, UserType type) {
+        this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.type = type;
+    }
+
+    public Student (){
         this.id = nextId;
         nextId++;
     }
