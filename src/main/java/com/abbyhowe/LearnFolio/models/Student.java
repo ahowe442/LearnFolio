@@ -18,16 +18,20 @@ public class Student {
     @Email(message = "Invalid email. Try again.")
     private String email;
 
+    private UserType type;
+
     private int id;
     private static int nextId = 1;
 
-    public Student(String firstName, String lastName, String email) {
+    public Student(String firstName, String lastName, String email, UserType type) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.type = type;
         this.id = nextId;
         nextId++;
     }
+
 
     public String getFirstName() {
         return firstName;
@@ -51,6 +55,14 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
     }
 
     public int getId() {

@@ -1,5 +1,6 @@
 package com.abbyhowe.LearnFolio.controllers;
 
+import com.abbyhowe.LearnFolio.data.StudentData;
 import com.abbyhowe.LearnFolio.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,19 +15,21 @@ import java.util.List;
 public class StudentController {
 
 //    @Autowired
-    private static List<Student> students = new ArrayList<>();
+//    private static List<Student> students = new ArrayList<>();
 
     @GetMapping
     public String displayAllStudents(Model model){
         model.addAttribute("title", "All Students");
-        model.addAttribute("students", students);
-
-        return "students/create";
+        model.addAttribute("students", StudentData.getAll());
+        return "students/index";
     }
 
     @GetMapping("create")
     public String displayCreateStudentForm(Model model){
         model.addAttribute("title", "Create Student");
+
+        model.addAttribute(new Student());
+
         model.addAttribute("firstName", "First Name");
         model.addAttribute("lastName", "Last Name");
         model.addAttribute("email", "Email");
