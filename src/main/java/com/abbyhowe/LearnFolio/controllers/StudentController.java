@@ -43,7 +43,7 @@ public class StudentController {
                                            Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
-            return "events/create";
+            return "students/create";
         }
 
         StudentData.add(newStudent);
