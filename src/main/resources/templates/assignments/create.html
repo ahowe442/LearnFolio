@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<h1>Add Assignment</h1>
+</br>
+</br>
+
+<form method="post">
+    <label>Assignment Title</label></br>
+    <input type="text" name="title"></br>
+    <label>Description</label></br>
+    <input type="text" name="description"></br>
+    <label>Due Date</label></br>
+    <input type="text" name="dueDate"></br>
+    <input type="submit" value="Create">
+</form>
+
+</br>
+
+
+</body>
+</html>
