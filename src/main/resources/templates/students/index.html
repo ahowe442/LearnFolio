@@ -8,18 +8,20 @@
 <h1>Add Student</h1>
 </br>
 </br>
+<a th:href="@{/students/create}" value="add student" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Add Student</i></a>
+<!--<a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Update Student</i></a>-->
 
-<form method="post">
-    <label>Student First Name</label></br>
-    <input type="text" name="firstName"></br>
-    <label>Student Last Name</label></br>
-    <input type="text" name="lastName"></br>
-    <label>Email</label></br>
-    <input type="text" name="email"></br>
-    <label>Verify Email</label></br>
-    <input type="text" name="verifyStudentEmail"></br>
-    <input type="submit" value="create">
-</form>
+<!--<form method="post">-->
+<!--&lt;!&ndash;    <label>Student First Name</label></br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="firstName"></br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <label>Student Last Name</label></br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="lastName"></br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <label>Email</label></br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="email"></br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <label>Verify Email</label></br>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="verifyStudentEmail"></br>&ndash;&gt;-->
+<!--    <input type="submit" value="create">-->
+<!--</form>-->
 
 </br>
 
@@ -30,6 +32,8 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email Address</th>
+        <th>Update Student</th>
+        <th>Delete Student</th>
     </tr>
     </thead>
     <tr th:block th:each="student : ${students}">
@@ -37,6 +41,8 @@
         <td th:text="${student.firstName}"></td>
         <td th:text="${student.lastName}"></td>
         <td th:text="${student.email}"></td>
+        <td><a th:href="@{/students/create}" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Update Student</i></a></td>
+        <td><a th:href="@{/students/create}" class="btn btn-primary"><i class="fas fa-user-times ml-2">Delete Student</i></a></td>
     </tr>
 </table>
 

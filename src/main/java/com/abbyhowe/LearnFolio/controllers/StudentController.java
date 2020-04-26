@@ -5,6 +5,7 @@ import com.abbyhowe.LearnFolio.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class StudentController {
         model.addAttribute("students", StudentData.getAll());
         return "students/index";
     }
+
 
     @GetMapping("create")
     public String displayCreateStudentForm(Model model){
@@ -48,6 +50,28 @@ public class StudentController {
 
         StudentData.add(newStudent);
         return "redirect:";
+    }
+
+    @GetMapping("edit/{id}")
+    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+        Student student = StudentData.getById(id);
+        model.addAttribute("student", student);
+        return "update-student";
+    }
+
+    @PostMapping("update/{id}")
+    public String updateStudent(@PathVariable("id") int id, @Valid Student student, Model model) {
+        StudentData.add(student);
+        model.addAttribute("students", StudentData.getAll());
+        return "index";
+    }
+
+    @GetMapping("delete/{id}")
+    public String deleteStudent(@PathVariable("id") int id, Model model) {
+        Student student = StudentData.getById(id);
+        StudentData.remove(id);
+        model.addAttribute("students", StudentData.getAll());
+        return "index";
     }
 
     @GetMapping("portfolio")

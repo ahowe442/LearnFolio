@@ -6,6 +6,8 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class Student {
+
+
     @NotBlank(message = "First name is required")
     @Size(min = 2, max = 50, message = "Name must be between 3 and 50 characters")
     private String firstName;
