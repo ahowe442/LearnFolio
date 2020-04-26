@@ -1,57 +1,112 @@
 package com.abbyhowe.LearnFolio.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.Objects;
+
 public class Teacher {
 
-    private String name;
-    private String address;
+    @NotBlank(message = "First name is required")
+    @Size(min = 2, max = 50, message = "Name must be between 3 and 50 characters")
+    private String firstName;
+
+    @NotBlank(message = "Last name is required")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
+    private String lastName;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email. Try again.")
+    private String email;
+
+    private UserType type;
+
     private int id;
     private static int nextId = 1;
 
+    public Teacher(String firstName, String lastName, String email, UserType type) {
+        this();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.type = type;
+    }
 
-//    increments id
-    public Teacher(){
-        id = nextId;
+    public Teacher (){
+        this.id = nextId;
         nextId++;
     }
 
-//    Constructor (calls itself to increment the id number)
-    public Teacher(String name, String address, int id) {
-        this();
-        this.name = name;
-        this.address = address;
-        this.id = id;
+
+    public String getFirstName() {
+        return firstName;
     }
 
-
-//    getters and setters
-    public String getName() {
-        return name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getAddress() {
-        return address;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
-//    toString Method
+    public static int getNextId() {
+        return nextId;
+    }
+
+    public static void setNextId(int nextId) {
+        Teacher.nextId = nextId;
+    }
+
     @Override
     public String toString() {
-        return "Teacher{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", id=" + id +
+        return "Student{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return getFirstName().equals(student.getFirstName()) &&
+                getLastName().equals(student.getLastName()) &&
+                getEmail().equals(student.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName(), getEmail());
     }
 }
