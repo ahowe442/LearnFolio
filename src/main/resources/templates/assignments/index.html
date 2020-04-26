@@ -28,6 +28,7 @@
         <td th:text="${assignment.id}"></td>
         <td th:text="${assignment.title}"></td>
         <td th:text="${assignment.description}"></td>
+        <td th:text="${assignment.createdBy}"></td>
         <td th:text="${assignment.dueDate}"></td>
         <td><a th:href="@{/students/create}" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Update Assignment</i></a></td>
         <td><a th:href="@{/students/create}" class="btn btn-primary"><i class="fas fa-user-times ml-2">Delete Assignment</i></a></td>
