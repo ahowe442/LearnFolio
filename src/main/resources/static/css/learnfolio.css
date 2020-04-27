@@ -62,3 +62,144 @@ div.job-listing {
 }
 
 //Calendar CSS
+
+
+.mini_month {
+    padding: 12px 0 0;
+    margin-bottom:24px
+}
+
+.mini-cal-header {
+    text-align: center;
+    padding: 12px 6px;
+    font-weight: bold;
+    border: 1px solid #C7CDD1;
+    color:var(--ic-brand-font-color-dark-lightened-15)
+}
+
+.mini-cal-header img {
+    vertical-align:middle
+}
+
+.mini-cal-header .prev_month_link {
+    float:left
+}
+
+.mini-cal-header .next_month_link {
+    float:right
+}
+
+.mini_calendar {
+    width: 100%;
+    border: 1px solid #C7CDD1;
+    border-top:none
+}
+
+.mini_calendar .day {
+    padding: 0;
+    height: 21px;
+    color: #444;
+    text-align: center;
+    cursor: pointer;
+    width: 14%;
+    font-size: 14px;
+    font-size: .875rem;
+    border-radius:3px
+}
+
+.mini_calendar .day.has_event {
+    background-color:#ebebeb
+}
+
+.mini_calendar .day.today {
+    background-color:#FBEDE7
+}
+
+.mini_calendar .day .event_link_text, .mini_calendar .day .today_text, .mini_calendar .day .previous_month_text, .mini_calendar .day .next_month_text {
+    display:none
+}
+
+.mini_calendar .day.other_month {
+    color:#888
+}
+
+.mini_calendar .day:hover, .mini_calendar .day.related, .mini_calendar .day.drop_target {
+    background-image: url("/dist/images/4_percent_opacity-c554512ede.png")
+}
+
+.mini_calendar .day.drop_target {
+    background-color:#aaa
+}
+
+.mini_calendar .day.today .today_text {
+    display:block
+}
+
+.mini_calendar .day.previous_month .previous_month_text {
+    display:block
+}
+
+.mini_calendar .day.next_month .next_month_text {
+    display:block
+}
+
+.mini_calendar .day.has_event .event_link_text {
+    display:block
+}
+
+
+#right-side .button-sidebar-wide {
+    text-align: left;
+    margin: 5px auto;
+    display:block
+}
+
+#right-side .button-sidebar-wide i[class * =icon-]:before, #right-side .button-sidebar-wide i[class^=icon-]:before {
+    color:inherit
+}
+
+#right-side button.button-sidebar-wide {
+    width:100%
+}
+
+#sidebar .ui-widget {
+    margin-bottom:1em
+}
+
+#editor_tabs_3 .sidebar_upload_file_form {
+    margin-top:15px
+}
+
+#editor_tabs_3 .sidebar_upload_file_form select, #editor_tabs_3 .sidebar_upload_file_form input {
+    width:100%
+}
+
+#editor_tabs_3 .sidebar_upload_file_form input:not([type=file]) {
+    box-sizing: border-box;
+    height:36px
+}
+#right-side .button-sidebar-wide {
+    text-align: left;
+    margin: 5px auto;
+    display:block
+}
+
+#right-side .button-sidebar-wide i[class * =icon-]:before, #right-side .button-sidebar-wide i[class^=icon-]:before {
+    color:inherit
+}
+
+#right-side button.button-sidebar-wide {
+    width:100%
+}
+.screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    -webkit-transform: translatez(0);
+    transform: translatez(0)
+}
