@@ -3,17 +3,17 @@
 <meta charset="UTF-8"/>
 <title>Teacher Dashboard</title>
 <head th:replace="fragments :: head"></head>
-<h1>{Teacher Account Name}</h1>
+<h1>Welcome @{Teacher Account Name}</h1>
 <body class="container body-content">
 <nav th:replace="fragments :: page-header"></nav>
 <div>
     <div>
 <h1>Teacher Dashboard</h1>
-<h1>=====================</h1>
+<!--<h1>=====================</h1>-->
 
-<h3>You made it to the teacher dashboard</h3>
+<!--<h3>You made it to the teacher dashboard</h3>-->
 
-<h1>=====================</h1>
+<!--<h1>=====================</h1>-->
     </div>
     <div>
         <!--        //Calendar View-->
@@ -592,9 +592,9 @@
         </div>
 
 <!--        Teacher Assignments View -->
-        <div class="col-md-8"><h5></br>Assignments Column </br></br> <button type="button" class="btn btn-success" data-toggle="button" aria-pressed="false">
-            Add Assignment
-        </button></h5>
+        <div class="col-md-8"><h5></br>Assignments Column </br></br>
+            <a th:href="@{/assignments/create}" value="add assignment" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Add Assignment</i></a>
+        </h5>
             <table class="table table-sm">
                 <thead>
                 <tr>
