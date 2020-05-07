@@ -3,9 +3,10 @@
 
 <head th:fragment="head">
 
-    <!-- Bootstrap stylesheets and script -->
+    <!-- Bootstrap and FontAwesome stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link th:href="@{/css/learnfolio.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
     <title th:text="'LearnFolio' + ${title == null ? '' : ' :: ' + title}">LearnFolio</title>
@@ -20,9 +21,10 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a th:href="@{/home}">Home</a></li>
-                <li><a th:href="@{/students}">Students</a></li>
-                <li><a th:href="@{/teachers}">Teachers</a></li>
+                <li><a th:href="@{/studentdash}">Students</a></li>
+                <li><a th:href="@{/teacherdash}">Teachers</a></li>
                 <li><a th:href="@{/assignments}">Assignments</a></li>
+                <li><a th:href="@{/uploadForm}">File Upload</a></li>
                 <li><a th:href="@{/login}" type="button" class="btn btn-primary">Login</a>a></li>
             </ul>
         </div>

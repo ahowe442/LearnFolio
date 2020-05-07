@@ -10,6 +10,7 @@
 </br>
 <a th:href="@{/assignments/create}" value="add assignment" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Add Assignment</i></a>
 
+
 </br>
 
 <table class="table table-striped">
@@ -20,8 +21,8 @@
         <th>Description</th>
         <th>Created By</th>
         <th>Due Date</th>
-        <th>Update Assignment</th>
-        <th>Delete Assignment</th>
+        <th>View/Update/Delete Assignment</th>
+
     </tr>
     </thead>
     <tr th:block th:each="assignment : ${assignments}">
@@ -30,8 +31,8 @@
         <td th:text="${assignment.description}"></td>
         <td th:text="${assignment.createdBy}"></td>
         <td th:text="${assignment.dueDate}"></td>
-        <td><a th:href="@{/students/create}" class="btn btn-primary"><i class="fas fa-user-edit ml-2">Update Assignment</i></a></td>
-        <td><a th:href="@{/students/create}" class="btn btn-primary"><i class="fas fa-user-times ml-2">Delete Assignment</i></a></td>
+        <td><a th:href="@{/students/create+${student.id}}" ><i class="fa fa-eye" style="font-size:21px;"></i></a>
+        <a th:href="@{/students/create+${student.id}}" ><i class="fa fa-edit" style="font-size:21px;"></i></a></td>
     </tr>
 </table>
 

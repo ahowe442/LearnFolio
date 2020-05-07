@@ -19,7 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
+//TODO: Fix the uploadForm
+
 @Controller
+@RequestMapping(value = "/uploadForm")
 public class FileUploadController {
 
     private final StorageService storageService;
@@ -37,7 +40,7 @@ public class FileUploadController {
                         "serveFile", path.getFileName().toString()).build().toUri().toString())
                 .collect(Collectors.toList()));
 
-        return "uploadForm";
+        return "redirect:/";
     }
 
     @GetMapping("/files/{filename:.+}")
