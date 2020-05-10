@@ -50,7 +50,32 @@
         <!--        Teacher Assignments View -->
         <div class="col-md-8"><h5></br>Assignments Column </br></br> <button type="button" class="btn btn-success" data-toggle="button" aria-pressed="false">
             Submit Assignment
-        </button></h5>
+        </button>
+            </br>
+<!--            File Uploads-->
+            <div th:if="${message}">
+                <h2 th:text="${message}"/>
+            </div>
+
+            <div>
+                <form method="POST" enctype="multipart/form-data" action="/uploadForm">
+                    <table>
+                        <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                        <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+                    </table>
+                </form>
+            </div>
+
+            <div>
+                <ul>
+                    <li th:each="file : ${files}">
+                        <a th:href="${file}" th:text="${file}" />
+                    </li>
+                </ul>
+            </div>
+        </h5>
+
+<!--            Student Assignment List-->
             <table class="table table-sm">
                 <thead>
                 <tr>
@@ -617,14 +642,14 @@
                     </tr>
                     </tbody>
                 </table>
+
+                    </div>
             </div>
-
-
         </div>
 
     </div>
     </div>
-
+</div>
 
 </body>
 </html>
