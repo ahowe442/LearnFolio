@@ -3,8 +3,6 @@ package com.abbyhowe.LearnFolio.controllers;
 
 import com.abbyhowe.LearnFolio.storage.StorageFileNotFoundException;
 import com.abbyhowe.LearnFolio.storage.StorageService;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -49,7 +47,7 @@ public class FileUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @PostMapping("/uploadForm")
+    @PostMapping("/")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
@@ -57,7 +55,7 @@ public class FileUploadController {
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "/redirect:";
+        return "redirect:/uploadForm";
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
