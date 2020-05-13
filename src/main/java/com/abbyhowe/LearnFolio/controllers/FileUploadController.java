@@ -20,7 +20,7 @@ public class FileUploadController {
 
     private final String upload_dir = "./upload-dir/";
 
-    @GetMapping("/")
+    @GetMapping("/indexUL")
     public String uploadPage() {
         return "indexUL";
     }
@@ -31,7 +31,7 @@ public class FileUploadController {
         // check if file is empty
         if (file.isEmpty()) {
             attributes.addFlashAttribute("message", "Please select a file to upload.");
-            return "redirect:/";
+            return "redirect:/indexUL";
         }
 
         // normalize the file path
@@ -48,7 +48,7 @@ public class FileUploadController {
         // return success response
         attributes.addFlashAttribute("message", "You successfully uploaded " + fileName + '!');
 
-        return "redirect:/";
+        return "redirect:/indexUL";
     }
 }
 
