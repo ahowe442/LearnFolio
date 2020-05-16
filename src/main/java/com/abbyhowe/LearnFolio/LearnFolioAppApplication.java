@@ -2,14 +2,10 @@ package com.abbyhowe.LearnFolio;
 
 import com.abbyhowe.LearnFolio.models.Student;
 import com.abbyhowe.LearnFolio.models.UserType;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EnableConfigurationProperties(StorageProperties.class)
 public class LearnFolioAppApplication {
 
 	public static void main(String[] args) {
@@ -21,15 +17,5 @@ public class LearnFolioAppApplication {
 		Student U4 = new Student ("Megan", "Ewy", "ME@gamil.com", UserType.STUDENT);
 		Student U5 = new Student ("Jennifer", "Stowbart", "JS@gmail.com", UserType.STUDENT);
 	}
-
-	@Bean
-	CommandLineRunner init(StorageService storageService) {
-		return (args) -> {
-			storageService.deleteAll();
-			storageService.init();
-		};
-	}
-
-
 
 }

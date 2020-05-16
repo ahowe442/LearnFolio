@@ -21,7 +21,7 @@ public class SpringbootUploadDownloadController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/users")
     public String users(Model model){
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
@@ -36,7 +36,7 @@ public class SpringbootUploadDownloadController {
         User dbUser = userService.save(user);
         if(dbUser!=null){
             redirectAttributes.addFlashAttribute("successmessage", "User has been saved successfully");
-            return "redirect:/";
+            return "redirect:/users";
         }else{
             model.addAttribute("errormessage", "User has not been saved, Please try again");
             model.addAttribute("user", user);
@@ -62,7 +62,7 @@ public class SpringbootUploadDownloadController {
         User dbUser = userService.update(user);
         if(dbUser!=null){
             redirectAttributes.addFlashAttribute("successmessage", "User has been updated successfully");
-            return "redirect:/";
+            return "redirect:/users";
         }else{
             model.addAttribute("errormessage", "User has not been updated, Please try again");
             model.addAttribute("user", user);
@@ -76,7 +76,7 @@ public class SpringbootUploadDownloadController {
         userService.deleteUser(userId);
         redirectAttributes.addFlashAttribute("successmessage", "User has been updated successfully");
 
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @GetMapping(value="/viewuser/{userId}")
