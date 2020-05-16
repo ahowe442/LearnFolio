@@ -24,6 +24,7 @@ public class SpringbootUploadDownloadController {
     @GetMapping(value = "/users")
     public String users(Model model){
         List<User> users = userService.getAllUsers();
+        model.addAttribute("title", "User Information");
         model.addAttribute("users", users);
         model.addAttribute("user", new User());
         model.addAttribute("userfiles", new ArrayList<UserFiles>());
