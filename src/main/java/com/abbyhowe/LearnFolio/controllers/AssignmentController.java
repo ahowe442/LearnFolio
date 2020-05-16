@@ -1,7 +1,7 @@
 package com.abbyhowe.LearnFolio.controllers;
 
-import com.abbyhowe.LearnFolio.data.AssignmentData;
-import com.abbyhowe.LearnFolio.data.StudentData;
+import com.abbyhowe.LearnFolio.repository.AssignmentData;
+import com.abbyhowe.LearnFolio.repository.StudentData;
 import com.abbyhowe.LearnFolio.models.Assignment;
 import com.abbyhowe.LearnFolio.models.Student;
 import org.springframework.stereotype.Controller;

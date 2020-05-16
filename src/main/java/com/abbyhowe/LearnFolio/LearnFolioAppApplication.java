@@ -2,8 +2,6 @@ package com.abbyhowe.LearnFolio;
 
 import com.abbyhowe.LearnFolio.models.Student;
 import com.abbyhowe.LearnFolio.models.UserType;
-import com.abbyhowe.LearnFolio.storage.StorageProperties;
-import com.abbyhowe.LearnFolio.storage.StorageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

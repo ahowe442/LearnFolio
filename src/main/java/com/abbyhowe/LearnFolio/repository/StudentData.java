@@ -1,4 +1,4 @@
-package com.abbyhowe.LearnFolio.data;
+package com.abbyhowe.LearnFolio.repository;
 
 import com.abbyhowe.LearnFolio.models.Student;
 
