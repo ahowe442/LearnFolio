@@ -28,9 +28,8 @@ public class StudentController {
     public String displayCreateStudentForm(Model model){
         model.addAttribute("title", "Create Student");
 
-        model.addAttribute(new Student());
+//        model.addAttribute(new Student());
 
-        model.addAttribute("firstName", "First Name");
         model.addAttribute("lastName", "Last Name");
         model.addAttribute("email", "Email");
         return "students/create";
@@ -49,7 +48,7 @@ public class StudentController {
     }
 
     @GetMapping("edit/{id}")
-    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         Student student = StudentData.getById(id);
         model.addAttribute("student", student);
         return "update-student";
@@ -63,7 +62,7 @@ public class StudentController {
     }
 
     @GetMapping("delete/{id}")
-    public String deleteStudent(@PathVariable("id") int id, Model model) {
+    public String deleteStudent(@PathVariable("id") Long id, Model model) {
         Student student = StudentData.getById(id);
         StudentData.remove(id);
         model.addAttribute("students", StudentData.getAll());

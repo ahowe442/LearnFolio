@@ -52,30 +52,30 @@
             Submit Assignment
         </button>
             </br>
-<!--            File Uploads-->
-            <div th:if="${message}">
-                <h2 th:text="${message}"/>
-            </div>
+            <!--&lt;!&ndash;            File Uploads&ndash;&gt;-->
+            <!--            <div th:if="${message}">-->
+            <!--                <h2 th:text="${message}"/>-->
+            <!--            </div>-->
 
-            <div>
-                <form method="POST" enctype="multipart/form-data" action="/uploadForm">
-                    <table>
-                        <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-                        <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-                    </table>
-                </form>
-            </div>
+            <!--            <div>-->
+            <!--                <form method="POST" enctype="multipart/form-data" action="/uploadForm">-->
+            <!--                    <table>-->
+            <!--                        <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>-->
+            <!--                        <tr><td></td><td><input type="submit" value="Upload" /></td></tr>-->
+            <!--                    </table>-->
+            <!--                </form>-->
+            <!--            </div>-->
 
-            <div>
-                <ul>
-                    <li th:each="file : ${files}">
-                        <a th:href="${file}" th:text="${file}" />
-                    </li>
-                </ul>
-            </div>
-        </h5>
+            <!--            <div>-->
+            <!--                <ul>-->
+            <!--                    <li th:each="file : ${files}">-->
+            <!--                        <a th:href="${file}" th:text="${file}" />-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--        </h5>-->
 
-<!--            Student Assignment List-->
+            <!--            Student Assignment List-->
             <table class="table table-sm">
                 <thead>
                 <tr>

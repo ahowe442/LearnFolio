@@ -3,10 +3,14 @@ package com.abbyhowe.LearnFolio.models;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="user")
@@ -20,24 +24,61 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+    @NotBlank(message = "First name is required")
+    @Size(min = 2, max = 50, message = "Name must be between 3 and 50 characters")
     @Column(name = "first_name")
     private String firstName;
+    @NotBlank(message = "Last name is required")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     @Column(name = "last_name")
     private String lastName;
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email. Try again.")
     @Column(name = "email")
     private String email;
+    @NotBlank(message = "Phone number is required")
     @Column(name = "phone_number")
     private String phoneNumber;
+    @Column(name = "type")
+    private UserType type;
     @Column(name = "created_date")
     private Date createdDate;
     @Column(name = "updated_dated")
     private Date updatedDate;
-
     @Transient
     private List<MultipartFile> files = new ArrayList<MultipartFile>();
     @Transient
     private List<String> removeImages = new ArrayList<String>();
 
+    /**
+     * constructor
+     */
+    public User(Long id, @NotBlank(message = "First name is required") @Size(min = 2, max = 50, message = "Name must be between 3 and 50 characters")
+            String firstName, @NotBlank(message = "Last name is required") @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
+                        String lastName, @NotBlank(message = "Email is required") @Email(message = "Invalid email. Try again.")
+                        String email, @NotBlank(message = "Phone number is required")
+                        String phoneNumber,
+                UserType type,
+                Date createdDate,
+                Date updatedDate,
+                List<MultipartFile> files,
+                List<String> removeImages) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.type = type;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.files = files;
+        this.removeImages = removeImages;
+    }
+
+
+    /**
+     * Getters and Setters
+     **/
     public Long getId() {
         return id;
     }
@@ -78,6 +119,14 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -108,5 +157,43 @@ public class User implements Serializable {
 
     public void setRemoveImages(List<String> removeImages) {
         this.removeImages = removeImages;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", type=" + type +
+                ", createdDate=" + createdDate +
+                ", updatedDate=" + updatedDate +
+                ", files=" + files +
+                ", removeImages=" + removeImages +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(getId(), user.getId()) &&
+                Objects.equals(getFirstName(), user.getFirstName()) &&
+                Objects.equals(getLastName(), user.getLastName()) &&
+                Objects.equals(getEmail(), user.getEmail()) &&
+                Objects.equals(getPhoneNumber(), user.getPhoneNumber()) &&
+                getType() == user.getType() &&
+                Objects.equals(getCreatedDate(), user.getCreatedDate()) &&
+                Objects.equals(getUpdatedDate(), user.getUpdatedDate()) &&
+                Objects.equals(getFiles(), user.getFiles()) &&
+                Objects.equals(getRemoveImages(), user.getRemoveImages());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPhoneNumber(), getType(), getCreatedDate(), getUpdatedDate(), getFiles(), getRemoveImages());
     }
 }

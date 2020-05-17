@@ -1,113 +1,95 @@
 package com.abbyhowe.LearnFolio.models;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
-public class Student {
+@Entity
+public class Student extends User {
 
+    private Double gradePointAverage;
+    private Teacher teacher;
 
-    @NotBlank(message = "First name is required")
-    @Size(min = 2, max = 50, message = "Name must be between 3 and 50 characters")
-    private String firstName;
-
-    @NotBlank(message = "Last name is required")
-    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
-    private String lastName;
-
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email. Try again.")
-    private String email;
-
-    private UserType type;
-
-    private int id;
-    private static int nextId = 1;
-
-    public Student(String firstName, String lastName, String email, UserType type) {
-        this();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.type = type;
+    /**
+     * constructor
+     *
+     * @param id
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param phoneNumber
+     * @param type
+     * @param createdDate
+     * @param updatedDate
+     * @param files
+     * @param removeImages
+     */
+    public Student(Long id,
+                   @NotBlank(message = "First name is required") @Size(min = 2, max = 50, message = "Name must be between 3 and 50 characters") String firstName,
+                   @NotBlank(message = "Last name is required") @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters") String lastName,
+                   @NotBlank(message = "Email is required") @Email(message = "Invalid email. Try again.") String email,
+                   @NotBlank(message = "Phone number is required") String phoneNumber,
+                   UserType type,
+                   Date createdDate,
+                   Date updatedDate,
+                   List<MultipartFile> files,
+                   List<String> removeImages) {
+        super(id, firstName, lastName, email, phoneNumber, type, createdDate, updatedDate, files, removeImages);
     }
 
-    public Student (){
-        this.id = nextId;
-        nextId++;
+
+    /**
+     * Getters adn Setters
+     */
+    public Double getGradePointAverage() {
+        return gradePointAverage;
     }
 
-
-    public String getFirstName() {
-        return firstName;
+    public void setGradePointAverage(Double gradePointAverage) {
+        this.gradePointAverage = gradePointAverage;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public UserType getType() {
-        return type;
-    }
-
-    public void setType(UserType type) {
-        this.type = type;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public static int getNextId() {
-        return nextId;
-    }
-
-    public static void setNextId(int nextId) {
-        Student.nextId = nextId;
-    }
-
+    /**
+     * toString Method
+     */
     @Override
     public String toString() {
         return "Student{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                "gradePointAverage=" + gradePointAverage +
+                ", teacher=" + teacher +
                 '}';
     }
+
+    /**
+     * equals and hashCode Methods.
+     */
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Student)) return false;
+        if (!super.equals(o)) return false;
         Student student = (Student) o;
-        return getFirstName().equals(student.getFirstName()) &&
-                getLastName().equals(student.getLastName()) &&
-                getEmail().equals(student.getEmail());
+        return Objects.equals(getGradePointAverage(), student.getGradePointAverage()) &&
+                Objects.equals(getTeacher(), student.getTeacher());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(), getLastName(), getEmail());
+        return Objects.hash(super.hashCode(), getGradePointAverage(), getTeacher());
     }
 }

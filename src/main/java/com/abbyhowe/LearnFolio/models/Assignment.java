@@ -1,29 +1,61 @@
 package com.abbyhowe.LearnFolio.models;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "assignment")
 public class Assignment {
 
+
+    private static final long serialVersionUID = -8885466378515990394L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "assignment_id")
+    private Long id;
+    @Column(name = "assignment_title")
     private String title;
+    @Column(name = "assignment_description")
     private String description;
+    @Column(name = "createdBy")
     private String createdBy;
+    @Column(name = "dueDate")
     private Date dueDate;
+    @Column(name = "assignment_createdDate")
+    private Date createdDate;
+    @Column(name = "assignment_updatedDate")
+    private Date updatedDate;
 
-    private int id;
-    private static int nextId = 1;
-
-    public Assignment(String title, String description, String createdBy, Date dueDate) {
-        this();
+    /**
+     * Constructor
+     */
+    public Assignment(Long id, String title, String description, String createdBy, Date dueDate, Date createdDate, Date updatedDate) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.createdBy = createdBy;
         this.dueDate = dueDate;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 
-    public Assignment (){
-        this.id = nextId;
-        nextId++;
+
+    /**
+     * Getters and Setters
+     */
+
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -58,47 +90,55 @@ public class Assignment {
         this.dueDate = dueDate;
     }
 
-    public int getId() {
-        return id;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public static int getNextId() {
-        return nextId;
+    public Date getUpdatedDate() {
+        return updatedDate;
     }
 
-    public static void setNextId(int nextId) {
-        Assignment.nextId = nextId;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
+
+    /**
+     * Methods (hashCode, toString, equals)
+     */
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Assignment)) return false;
         Assignment that = (Assignment) o;
-        return getId() == that.getId() &&
+        return Objects.equals(id, that.id) &&
                 Objects.equals(getTitle(), that.getTitle()) &&
                 Objects.equals(getDescription(), that.getDescription()) &&
                 Objects.equals(getCreatedBy(), that.getCreatedBy()) &&
-                Objects.equals(getDueDate(), that.getDueDate());
+                Objects.equals(getDueDate(), that.getDueDate()) &&
+                Objects.equals(getCreatedDate(), that.getCreatedDate()) &&
+                Objects.equals(getUpdatedDate(), that.getUpdatedDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTitle(), getDescription(), getCreatedBy(), getDueDate(), getId());
+        return Objects.hash(id, getTitle(), getDescription(), getCreatedBy(), getDueDate(), getCreatedDate(), getUpdatedDate());
     }
 
     @Override
     public String toString() {
         return "Assignment{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", createdBy='" + createdBy + '\'' +
                 ", dueDate=" + dueDate +
-                ", id=" + id +
+                ", createdDate=" + createdDate +
+                ", updatedDate=" + updatedDate +
                 '}';
     }
 }

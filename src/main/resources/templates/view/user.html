@@ -19,15 +19,32 @@
                 <strong th:text="${errormessage}">Success!</strong> Indicates a successful or positive action.
             </div>
 
-            <form action="#" th:action="@{${isAdd}?'/save':'/update'}" th:object="${user}" method="post" enctype="multipart/form-data">
+            <form action="#" th:action="@{${isAdd}?'/save':'/update'}" th:object="${user}" method="post"
+                  enctype="multipart/form-data">
+
+                <!--                Dropdown for User type or role-->
+                <p>Role</p>
                 <div class="form-group">
-                    <input type="text", class="form-control" id="firstName" placeholder="First Name" th:field="*{firstName}">
+                    <select id="type" placeholder="Role" th:field="*{type}">
+                        <option
+                                th:each="type : ${T(com.abbyhowe.LearnFolio.models.UserType).values()}"
+                                th:value="${type}"
+                                th:text="${type.displayName}">
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="text" , class="form-control" id="firstName" placeholder="First Name"
+                           th:field="*{firstName}">
                 </div>
                 <div class="form-group">
-                    <input type="text", class="form-control" id="lastName" placeholder="Last Name" th:field="*{lastName}">
+                    <input type="text" , class="form-control" id="lastName" placeholder="Last Name"
+                           th:field="*{lastName}">
                 </div>
                 <div class="form-group">
-                    <input type="text", class="form-control" id="email" placeholder="Email" th:field="*{email}">
+                    <input type="text" , class="form-control" id="email" placeholder="Email" th:field="*{email}">
                 </div>
                 <div class="form-group">
                     <input type="text", class="form-control" id="phoneNumber" placeholder="Phone Number" th:field="*{phoneNumber}">
@@ -73,6 +90,7 @@
                         <th>Last name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
+                        <th>User Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -82,6 +100,7 @@
                     <td th:text="${user.lastName}"></td>
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.phoneNumber}"></td>
+                    <td th:text="${user.type}"></td>
                     <td>
                         <a th:href="@{'/viewuser/'+${user.id}}"><i class="fa fa-eye" style="font-size:21px;"></i></a>
                         <a th:href="@{'/edituser/'+${user.id}}"><i class="fa fa-edit" style="font-size:21px;"></i></a>
