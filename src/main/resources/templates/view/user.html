@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h2>User Form</h2>
+            <h2>Add New User</h2>
             <div class="alert alert-success alert-dismissible" th:if="${successmessage}">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong th:text="${successmessage}">Success!</strong> Indicates a successful or positive action.
@@ -19,15 +19,29 @@
                 <strong th:text="${errormessage}">Success!</strong> Indicates a successful or positive action.
             </div>
 
-            <form action="#" th:action="@{${isAdd}?'/save':'/update'}" th:object="${user}" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input type="text", class="form-control" id="firstName" placeholder="First Name" th:field="*{firstName}">
+            <form action="#" th:action="@{${isAdd}?'/save':'/update'}" th:object="${user}" method="post"
+                  enctype="multipart/form-data">
+
+                <!--                Dropdown for User type or role-->
+                <div class="form-group"><p>Select Role</p>
+                    <select th:field="*{type}">
+                        <option
+                                th:each="type : ${T(com.abbyhowe.LearnFolio.models.UserType).values()}"
+                                th:value="${type}"
+                                th:text="${type.displayName}">
+                        </option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <input type="text", class="form-control" id="lastName" placeholder="Last Name" th:field="*{lastName}">
+                    <input type="text" , class="form-control" id="firstName" placeholder="First Name"
+                           th:field="*{firstName}">
                 </div>
                 <div class="form-group">
-                    <input type="text", class="form-control" id="email" placeholder="Email" th:field="*{email}">
+                    <input type="text" , class="form-control" id="lastName" placeholder="Last Name"
+                           th:field="*{lastName}">
+                </div>
+                <div class="form-group">
+                    <input type="text" , class="form-control" id="email" placeholder="Email" th:field="*{email}">
                 </div>
                 <div class="form-group">
                     <input type="text", class="form-control" id="phoneNumber" placeholder="Phone Number" th:field="*{phoneNumber}">

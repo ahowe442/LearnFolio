@@ -32,6 +32,8 @@ public class User implements Serializable {
     private Date createdDate;
     @Column(name = "updated_dated")
     private Date updatedDate;
+    @Column(name = "type")
+    private UserType type;
 
     @Transient
     private List<MultipartFile> files = new ArrayList<MultipartFile>();
@@ -94,6 +96,14 @@ public class User implements Serializable {
         this.updatedDate = updatedDate;
     }
 
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
     public List<MultipartFile> getFiles() {
         return files;
     }
@@ -109,4 +119,5 @@ public class User implements Serializable {
     public void setRemoveImages(List<String> removeImages) {
         this.removeImages = removeImages;
     }
+
 }
