@@ -2,6 +2,7 @@ package com.abbyhowe.LearnFolio.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "user_files")
@@ -22,10 +23,11 @@ public class UserFiles implements Serializable {
     private String modifiedFileName;
     @Column(name = "file_extension")
     private String fileExtension;
+    @Column(name = "updated_dated")
+    private Date updatedDate;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 
 
     public Long getId() {
@@ -58,6 +60,14 @@ public class UserFiles implements Serializable {
 
     public void setFileExtension(String fileExtension) {
         this.fileExtension = fileExtension;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public User getUser() {
