@@ -29,7 +29,7 @@ public class AssignmentController {
         public String displayCreateAssignmentForm(Model model){
             model.addAttribute("title", "Create Assignment");
 
-            model.addAttribute(new Assignment());
+//            model.addAttribute(new Assignment());
 
             model.addAttribute("title", "Title");
             model.addAttribute("description", "Description");
@@ -50,27 +50,27 @@ public class AssignmentController {
             return "redirect:";
         }
 
-        @GetMapping("edit/{id}")
-        public String showUpdateAssignmentForm(@PathVariable("id") int id, Model model) {
-            Assignment assignment = AssignmentData.getById(id);
-            model.addAttribute("assignment", assignment);
-            return "assignments/update-assignment";
-        }
+    @GetMapping("edit/{id}")
+    public String showUpdateAssignmentForm(@PathVariable("id") Long id, Model model) {
+        Assignment assignment = AssignmentData.getById(id);
+        model.addAttribute("assignment", assignment);
+        return "assignments/update-assignment";
+    }
 
-        @PostMapping("update/{id}")
-        public String updateAssignment(@PathVariable("id") int id, @Valid Assignment assignment, Model model) {
-            AssignmentData.add(assignment);
-            model.addAttribute("assignments", AssignmentData.getAll());
-            return "assignments/index";
-        }
+    @PostMapping("update/{id}")
+    public String updateAssignment(@PathVariable("id") Long id, @Valid Assignment assignment, Model model) {
+        AssignmentData.add(assignment);
+        model.addAttribute("assignments", AssignmentData.getAll());
+        return "assignments/index";
+    }
 
-        @GetMapping("delete/{id}")
-        public String deleteStudent(@PathVariable("id") int id, Model model) {
-            Student student = StudentData.getById(id);
-            StudentData.remove(id);
-            model.addAttribute("students", StudentData.getAll());
-            return "assignments/index";
-        }
+    @GetMapping("delete/{id}")
+    public String deleteStudent(@PathVariable("id") Long id, Model model) {
+        Student student = StudentData.getById(id);
+        StudentData.remove(id);
+        model.addAttribute("students", StudentData.getAll());
+        return "assignments/index";
+    }
 
         @GetMapping("portfolio")
         public String displayStudentPortfolio(Model model){

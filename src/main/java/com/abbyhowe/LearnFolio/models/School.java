@@ -1,17 +1,23 @@
 package com.abbyhowe.LearnFolio.models;
 
+import javax.persistence.*;
+
 public class School {
 
+    private static final long serialVersionUID = -8885466378515990394L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "school_id")
+    private Long id;
+    @Column(name = "school_name")
     private String name;
+    @Column(name = "school_address")
     private String address;
-    private int id;
-    private static int nextId = 1;
+    @Column(name = "school_phoneNumber")
+    private String phoneNumber;
 
-    public School(String name, String address, int id) {
-        this.name = name;
-        this.address = address;
-        this.id = id;
-    }
+    private Student student;
+    private Teacher teacher;
 
     public String getName() {
         return name;
@@ -29,19 +35,4 @@ public class School {
         this.address = address;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public static int getNextId() {
-        return nextId;
-    }
-
-    public static void setNextId(int nextId) {
-        School.nextId = nextId;
-    }
 }

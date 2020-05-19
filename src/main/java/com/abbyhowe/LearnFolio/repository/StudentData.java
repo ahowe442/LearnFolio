@@ -9,7 +9,7 @@ import java.util.Map;
 public class StudentData {
     //holds static methods.
     //this will be the place to hold students.
-    private static final Map<Integer, Student> students = new HashMap<>();
+    private static final Map<Long, Student> students = new HashMap<>();
 
     //gets all students.
     public static Collection<Student> getAll(){
@@ -17,7 +17,7 @@ public class StudentData {
     }
 
     //get a single student.
-    public static Student getById(int id){
+    public static Student getById(Long id) {
         return (Student) students.values();
     }
 
@@ -27,7 +27,7 @@ public class StudentData {
     }
 
     //deletes an event
-    public static void remove(int id){
+    public static void remove(Long id) {
         students.remove(id);
     }
 }
