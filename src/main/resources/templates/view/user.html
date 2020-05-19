@@ -32,6 +32,8 @@
                         </option>
                     </select>
                 </div>
+
+                <!-- User Entered Data -->
                 <div class="form-group">
                     <input type="text" , class="form-control" id="firstName" placeholder="First Name"
                            th:field="*{firstName}">
@@ -49,6 +51,8 @@
                 <div class="form-group">
                     <input type="file", class="form-control" id="files" placeholder="Upload Files" th:field="*{files}" multiple="multiple">
                 </div>
+
+                <!-- Images of files -->
                 <div class="form-group">
                     <span th:each="file, itrStat : ${userfiles}" class="imagecontainer" th:id="'imageindex'+${itrStat.index}">
                         <img th:src="@{'/images/'+${file.modifiedFileName}}" style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"
@@ -59,6 +63,7 @@
                         <img th:src="@{'/img/word.png'}" style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class= "image" th:if="${file.fileExtension == 'doc' or file.fileExtension == 'docx'}">
                         <img th:src="@{'/img/ppt.png'}" style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class= "image" th:if="${file.fileExtension == 'ppt' or file.fileExtension == 'pptx'}">
                         <img th:src="@{'/img/camera.jpg'}" style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class= "image" th:if="${file.fileExtension == 'png' or file.fileExtension == 'jpg'}">
+                        <!-- Delete File Overlay Option -->
                         <span class="overlay">
                             <a href="#" class="icon image-confirm-delete" title="image delete" th:attr="data-id=${itrStat.index}, data-name=${file.modifiedFileName}">
                                 <i class="fa fa-trash" style="color:red;"></i>

@@ -71,7 +71,7 @@ public class SpringbootUploadDownloadController {
         }
     }
 
-    @GetMapping(value="/deleteuser/{userId}")
+    @GetMapping(value = "/deleteuser/{userId}")
     public String deleteuser(@PathVariable Long userId, RedirectAttributes redirectAttributes, Model model) {
         userService.deleteFilesByUserId(userId);
         userService.deleteUser(userId);
@@ -80,7 +80,15 @@ public class SpringbootUploadDownloadController {
         return "redirect:/users";
     }
 
-    @GetMapping(value="/viewuser/{userId}")
+//    @GetMapping(value="/deletefile/{userId}")
+//    public String deleteFile(@PathVariable Long userId, RedirectAttributes redirectAttributes, Model model ){
+//        userService.deleteFilesByUserId(userId);
+//        redirectAttributes.addFlashAttribute("successmessage", "File has been deleted");
+//
+//        return "redirect:/users";
+//    }
+
+    @GetMapping(value = "/viewuser/{userId}")
     public String viewuser(@PathVariable Long userId, Model model) {
         User user = userService.findById(userId);
         List<UserFiles> userFiles = userService.findFilesByUserId(userId);
