@@ -87,6 +87,7 @@ public class SpringbootUploadDownloadController {
 //
 //        return "redirect:/users";
 //    }
+//     /
 
     @GetMapping(value = "/viewuser/{userId}")
     public String viewuser(@PathVariable Long userId, Model model) {
