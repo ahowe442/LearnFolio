@@ -120,10 +120,12 @@
                                                                        style="font-size:21px;"></i></a>
                             <a th:href="@{'/edituser/'+${user.id}}"><i class="fa fa-edit"
                                                                        style="font-size:21px;"></i></a>
-                            <a href="#" class="confirm-delete"
-                               th:attr="data-id=${user.id}, data-name=${user.firstName+' '+user.lastName}">
-                                <i class="fa fa-trash" style="font-size:21px;color:red;"></i>
-                            </a>
+                            <a th:href="@{'/deleteuser/'+${user.id}}"><i class="fa fa-trash"
+                                                                         style="font-size:21px;color:red;"></i></a>
+                            <!--                            <a href="#" class="confirm-delete"-->
+                            <!--                               th:attr="data-id=${user.id}, data-name=${user.firstName+' '+user.lastName}">-->
+                            <!--                                <i class="fa fa-trash" style="font-size:21px;color:red;"></i>-->
+                            <!--                            </a>-->
                         </td>
                     </tr>
                     </tbody>
