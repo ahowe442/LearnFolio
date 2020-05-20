@@ -1,8 +1,10 @@
 package com.abbyhowe.LearnFolio.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,12 +36,39 @@ public class User implements Serializable {
     private Date updatedDate;
     @Column(name = "type")
     private UserType type;
+    @NotNull
+    private String username;
+
+    @NotNull
+    private String pwHash;
 
     @Transient
     private List<MultipartFile> files = new ArrayList<MultipartFile>();
     @Transient
     private List<String> removeImages = new ArrayList<String>();
 
+
+    //Needed For Authentication
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
+    }
+
+
+    //Getters and Setters
     public Long getId() {
         return id;
     }
