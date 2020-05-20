@@ -29,9 +29,6 @@ public class UserFiles implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "portfolio_id")
-    private Portfolio portfolio;
 
     public Long getId() {
         return id;
@@ -81,11 +78,4 @@ public class UserFiles implements Serializable {
         this.user = user;
     }
 
-    public Portfolio getPortfolio() {
-        return portfolio;
-    }
-
-    public void setPortfolio(Portfolio portfolio) {
-        this.portfolio = portfolio;
-    }
 }
