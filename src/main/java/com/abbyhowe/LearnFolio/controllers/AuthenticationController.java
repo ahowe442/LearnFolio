@@ -1,9 +1,8 @@
 package com.abbyhowe.LearnFolio.controllers;
 
 import com.abbyhowe.LearnFolio.models.User;
-import com.abbyhowe.LearnFolio.models.dto.LoginFormDTO;
-import com.abbyhowe.LearnFolio.models.dto.RegisterFormDTO;
 import com.abbyhowe.LearnFolio.repository.UserRepository;
+import com.abbyhowe.LearnFolio.repository.dto.RegisterFormDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,18 +45,17 @@ public class AuthenticationController {
 
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
-        model.addAttribute(new RegisterFormDTO());
+        model.addAttribute(new RegisterFormDto());
         model.addAttribute("title", "Register");
         return "register";
     }
 
     @PostMapping("/register")
-    public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
+    public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDto registerFormDTO,
                                           Errors errors, HttpServletRequest request,
                                           Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Register");
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -78,54 +76,15 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getFirstName(), registerFormDTO.getLastName(), registerFormDTO.getEmail(), registerFormDTO.getPhoneNumber(), registerFormDTO.getType());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:";
+        if (newUser.getType().equals("STUDENT")) {
+            return "redirect:/studentDash";
+        } else
+            return "redirect:/teacherDash";
     }
 
-    @GetMapping("/login")
-    public String displayLoginForm(Model model) {
-        model.addAttribute(new LoginFormDTO());
-        model.addAttribute("title", "Log In");
-        return "login";
-    }
-
-    @PostMapping("/login")
-    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
-                                   Errors errors, HttpServletRequest request,
-                                   Model model) {
-
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Log In");
-            return "login";
-        }
-
-        User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
-
-        if (theUser == null) {
-            errors.rejectValue("username", "user.invalid", "The given username does not exist");
-            model.addAttribute("title", "Log In");
-            return "login";
-        }
-
-        String password = loginFormDTO.getPassword();
-
-        if (!theUser.isMatchingPassword(password)) {
-            errors.rejectValue("password", "password.invalid", "Invalid password");
-            model.addAttribute("title", "Log In");
-            return "login";
-        }
-
-        setUserInSession(request.getSession(), theUser);
-
-        return "redirect:";
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request) {
-        request.getSession().invalidate();
-        return "redirect:/login";
-    }
 }
+

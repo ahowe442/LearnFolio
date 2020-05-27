@@ -11,17 +11,21 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User implements Serializable {
 
-    /***
-     *
-     */
+
     private static final long serialVersionUID = -8885466378515990394L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+    @NotNull
+    private String username;
+
+    @NotNull
+    private String pwHash;
+
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -36,39 +40,47 @@ public class User implements Serializable {
     private Date updatedDate;
     @Column(name = "type")
     private UserType type;
-    @NotNull
-    private String username;
-
-    @NotNull
-    private String pwHash;
 
     @Transient
     private List<MultipartFile> files = new ArrayList<MultipartFile>();
     @Transient
     private List<String> removeImages = new ArrayList<String>();
 
-
-    //Needed For Authentication
-    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, Date createdDate, Date updatedDate, UserType type) {
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.createdDate = createdDate; // Now
+        this.updatedDate = updatedDate;  //Now
+        this.type = type;
+    }
 
     public User() {
     }
 
-    public User(String username, String password) {
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, UserType type) {
         this.username = username;
         this.pwHash = encoder.encode(password);
-    }
-
-    public String getUsername() {
-        return username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.type = type;
     }
 
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
 
+    public String getUsername() {
+        return username;
+    }
 
-    //Getters and Setters
     public Long getId() {
         return id;
     }
