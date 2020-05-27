@@ -1,25 +1,31 @@
 package com.abbyhowe.LearnFolio.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User implements Serializable {
 
-    /***
-     *
-     */
+
     private static final long serialVersionUID = -8885466378515990394L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+    @NotNull
+    private String username;
+
+    @NotNull
+    private String pwHash;
+
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -39,6 +45,41 @@ public class User implements Serializable {
     private List<MultipartFile> files = new ArrayList<MultipartFile>();
     @Transient
     private List<String> removeImages = new ArrayList<String>();
+
+    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, Date createdDate, Date updatedDate, UserType type) {
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.createdDate = createdDate; // Now
+        this.updatedDate = updatedDate;  //Now
+        this.type = type;
+    }
+
+    public User() {
+    }
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, UserType type) {
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.type = type;
+    }
+
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
+    }
+
+    public String getUsername() {
+        return username;
+    }
 
     public Long getId() {
         return id;

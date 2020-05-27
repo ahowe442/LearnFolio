@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: page-header"></header>
+</br>
+</br>
+</br>
+</br>
+<form th:action="@{/register}" th:object="${registerFormDTO}" method="post">
+    <div class="form-group">
+        <label>Username
+            <input class="form-control" type="text" th:field="${registerFormDto.username}" id="username"/>
+        </label>
+        <p class="error" th:errors="${registerFormDto.username}"></p>
+    </div>
+    <div class="form-group">
+        <label>Password
+            <input class="form-control" type="text" th:field="${registerFormDto.password}" id="password"/>
+        </label>
+        <p class="error" th:errors="${registerFormDto.password}"></p>
+    </div>
+    <div class="form-group">
+        <label>Verify Password
+            <input class="form-control" type="text" th:field="${registerFormDto.verifyPassword}" id="password"/>
+        </label>
+    </div>
+    <div class="form-group">
+        <label>First Name
+            <input class="form-control" type="text" th:field="${registerFormDto.firstName}" id="firstName"/>
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Last Name
+            <input class="form-control" type="text" th:field="${registerFormDto.lastName}" id="lastName"/>
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Email
+            <input class="form-control" type="text" th:field="${registerFormDto.email}" id="email"/>
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Phone Number
+            <input class="form-control" type="text" th:field="${registerFormDto.phoneNumber}" id="phoneNumber"/>
+        </label>
+    </div>
+    <div class="form-group">
+        <select th:field="${registerFormDto.type}">
+            <option
+                    th:each="type : ${T(com.abbyhowe.LearnFolio.models.UserType).values()}"
+                    th:value="${type}"
+                    th:text="${type.displayName}">
+            </option>
+        </select>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Register"/>
+</form>
+
+</body>
+</html>
