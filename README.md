@@ -32,6 +32,8 @@ parents, college admissions or prospective employers.  Thus giving them the best
 >Customizable proficiency scales will help faculty and students with clear guidelines for equitable progress monitoring. 
 - **Sharing:** 
 >Users will be able to share portfolio progress with guardians. 
+>- **Aligns to State Standards:** 
+ >Teachers will be able to tag assignments state standards. 
 
 
 ### Technologies
@@ -44,6 +46,8 @@ parents, college admissions or prospective employers.  Thus giving them the best
 * How a user can upload a variety of media.  i.e. pdf, photos, videos, and hyperlinks.
 * How to configure sharing features.  
 * How to import state standards, i.e. likely will need to use data from a public API 
+* How to implement user authentication and user role authorization.  
+
 
 ### Project Tracker
 Link to my [Trello board ](https://trello.com/b/aXf3ie24/liftoff-project-boardabbyhowe) here
