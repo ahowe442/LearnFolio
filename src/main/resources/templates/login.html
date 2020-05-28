@@ -8,14 +8,20 @@
     <form th:action="@{/login}" th:object="${loginForm}" method="post">
         <div th:if="${invalidCredentials}" class="alert alert-danger" role="alert">Username or Password is Invalid</div>
 
-        <label for="username">Username</label>
+        <label for="username">Username</label></br>
         <input type="text" id="username" name="username" autofocus="autofocus">
         <br/>
 
-        <label for="password">Password   </label>
-        <input  type="password" id="password" name="password" />
-        <br/>
-        <input type="submit" value="Log In" />
+        <label for="password">Password </label></br>
+        <input type="password" id="password" name="password"/>
+        </br>
+        </br>
+        <input type="submit" class="btn btn-primary" value="Log In"/>
     </form>
+</br>
+</br>
+
+<p>Don't have an account? <a href="/register">Register for one.</a></p>
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.abbyhowe.LearnFolio.controllers;
 
 import com.abbyhowe.LearnFolio.models.User;
+import com.abbyhowe.LearnFolio.models.dto.LoginFormDTO;
 import com.abbyhowe.LearnFolio.repository.UserRepository;
 import com.abbyhowe.LearnFolio.repository.dto.RegisterFormDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,10 +81,51 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        if (newUser.getType().equals("STUDENT")) {
-            return "redirect:/studentDash";
-        } else
-            return "redirect:/teacherDash";
+        return "redirect:";
+    }
+
+    @GetMapping("/login")
+    public String displayLoginForm(Model model) {
+        model.addAttribute(new LoginFormDTO());
+        model.addAttribute("title", "Log In");
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
+                                   Errors errors, HttpServletRequest request,
+                                   Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
+
+        User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
+
+        if (theUser == null) {
+            errors.rejectValue("username", "user.invalid", "The given username does not exist");
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
+
+        String password = loginFormDTO.getPassword();
+
+        if (!theUser.isMatchingPassword(password)) {
+            errors.rejectValue("password", "password.invalid", "Invalid password");
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
+
+        setUserInSession(request.getSession(), theUser);
+
+        return "redirect:";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "redirect:/login";
     }
 
 }
