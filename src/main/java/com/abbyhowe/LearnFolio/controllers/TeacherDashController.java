@@ -10,8 +10,6 @@ public class TeacherDashController {
 
     @RequestMapping("")
     public String teacherdash(Model model) {
-//        model.addAttribute("employers", employerRepository.findAll());
-//        model.addAttribute("skills", skillRepository.findAll());
         return "teacherdash";
     }
 

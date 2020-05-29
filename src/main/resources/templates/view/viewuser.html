@@ -83,37 +83,37 @@
                                 <i th:text="${file.modifiedFileName}"></i>
                             </a>
                         </td>
-                        <td>
-                            <span th:each="file, itrStat : ${userfiles}" class="imagecontainer"
-                                  th:id="'imageindex'+${itrStat.index}">
-                        <img th:src="@{'/images/'+${file.modifiedFileName}}"
-                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"
-                             th:if="${file.fileExtension != 'pdf' and file.fileExtension != 'xls' and file.fileExtension != 'xlsx' and file.fileExtension != 'doc' and file.fileExtension != 'docx' and file.fileExtension != 'ppt' and file.fileExtension != 'pptx' and file.fileExtension != 'jpg' and file.fileExtension != 'png'}">
+                        <!--                        <td>-->
+                        <!--                            <span th:each="file, itrStat : ${userfiles}" class="imagecontainer"-->
+                        <!--                                  th:id="'imageindex'+${itrStat.index}">-->
+                        <!--                        <img th:src="@{'/images/'+${file.modifiedFileName}}"-->
+                        <!--                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"-->
+                        <!--                             th:if="${file.fileExtension != 'pdf' and file.fileExtension != 'xls' and file.fileExtension != 'xlsx' and file.fileExtension != 'doc' and file.fileExtension != 'docx' and file.fileExtension != 'ppt' and file.fileExtension != 'pptx' and file.fileExtension != 'jpg' and file.fileExtension != 'png'}">-->
 
-                        <img th:src="@{'/img/Pdf_icon_file.png'}"
-                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"
-                             th:if="${file.fileExtension == 'pdf'}">
-                        <img th:src="@{'/img/excel.png'}"
-                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"
-                             th:if="${file.fileExtension == 'xls' or file.fileExtension == 'xlsx'}">
-                        <img th:src="@{'/img/word.png'}"
-                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"
-                             th:if="${file.fileExtension == 'doc' or file.fileExtension == 'docx'}">
-                        <img th:src="@{'/img/ppt.png'}"
-                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"
-                             th:if="${file.fileExtension == 'ppt' or file.fileExtension == 'pptx'}">
-                        <img th:src="@{'/img/camera.jpg'}"
-                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"
-                             th:if="${file.fileExtension == 'png' or file.fileExtension == 'jpg'}">
-                                <!-- Delete File Overlay Option -->
-                        <span class="overlay">
-                            <a href="#" class="icon image-confirm-delete" title="image delete"
-                               th:attr="data-id=${itrStat.index}, data-name=${file.modifiedFileName}">
-                                <i class="fa fa-trash" style="color:red;"></i>
-                            </a>
-                        </span>
-                    </span>
-                        </td>
+                        <!--                        <img th:src="@{'/img/Pdf_icon_file.png'}"-->
+                        <!--                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"-->
+                        <!--                             th:if="${file.fileExtension == 'pdf'}">-->
+                        <!--                        <img th:src="@{'/img/excel.png'}"-->
+                        <!--                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"-->
+                        <!--                             th:if="${file.fileExtension == 'xls' or file.fileExtension == 'xlsx'}">-->
+                        <!--                        <img th:src="@{'/img/word.png'}"-->
+                        <!--                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"-->
+                        <!--                             th:if="${file.fileExtension == 'doc' or file.fileExtension == 'docx'}">-->
+                        <!--                        <img th:src="@{'/img/ppt.png'}"-->
+                        <!--                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"-->
+                        <!--                             th:if="${file.fileExtension == 'ppt' or file.fileExtension == 'pptx'}">-->
+                        <!--                        <img th:src="@{'/img/camera.jpg'}"-->
+                        <!--                             style="width:80px; height:80px; border-radius: 50%; margin-left:10px;" class="image"-->
+                        <!--                             th:if="${file.fileExtension == 'png' or file.fileExtension == 'jpg'}">-->
+                        <!--                                &lt;!&ndash; Delete File Overlay Option &ndash;&gt;-->
+                        <!--                        <span class="overlay">-->
+                        <!--                            <a href="#" class="icon image-confirm-delete" title="image delete"-->
+                        <!--                               th:attr="data-id=${itrStat.index}, data-name=${file.modifiedFileName}">-->
+                        <!--                                <i class="fa fa-trash" style="color:red;"></i>-->
+                        <!--                            </a>-->
+                        <!--                        </span>-->
+                        <!--                    </span>-->
+                        <!--                        </td>-->
                     </tr>
 
                     </tbody>
